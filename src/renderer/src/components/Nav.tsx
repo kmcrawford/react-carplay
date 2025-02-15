@@ -45,17 +45,18 @@ export default function Nav({ receivingVideo, settings }) {
       value={value}
       onChange={handleChange}
       aria-label="icon label tabs example"
+      style={{ backgroundColor: 'black', color: 'white' }}
       centered
       sx={pathname === '/' && isPlugged ? { minHeight: '0px', height: '0px' } : {}}
     >
-      <Tab icon={<PhoneIcon />} to={'/'} component={Link} />
-      <Tab icon={<InfoIcon />} to={'/info'} component={Link} />
-      <Tab icon={<SettingsIcon />} to={'/settings'} component={Link} />
+      <Tab icon={<PhoneIcon />} to={'/'} component={Link} sx={{ color: 'white' }}/>
+      <Tab icon={<InfoIcon />} to={'/info'} component={Link} sx={{ color: 'white' }}/>
+      <Tab icon={<SettingsIcon />} to={'/settings'} component={Link} sx={{ color: 'white' }}/>
 
       {settings?.camera !== '' ? (
-        <Tab icon={<CameraIcon />} to={'/camera'} component={Link} />
+        <Tab icon={<CameraIcon />} to={'/camera'} component={Link} sx={{ color: 'white' }}/>
       ) : null}
-      <Tab icon={<ExitToApp />} onClick={() => quit()} />
+      <Tab icon={<ExitToApp />} onClick={() => quit()} sx={{ color: 'white' }}/>
     </Tabs>
   )
 }

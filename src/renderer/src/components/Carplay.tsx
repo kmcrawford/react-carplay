@@ -228,7 +228,9 @@ function Carplay({ receivingVideo, setReceivingVideo, settings, command, command
             height: '100%',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            backgroundColor: 'black',
+            color: 'white'
           }}
         >
           {deviceFound === false && (
