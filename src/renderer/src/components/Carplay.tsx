@@ -139,7 +139,7 @@ function Carplay({ receivingVideo, setReceivingVideo, settings, command, command
               stopRecording()
               break
             case CommandMapping.requestHostUI:
-              navigate('/settings')
+              navigate('/info')
           }
           break
         case 'failure':

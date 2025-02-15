@@ -72,8 +72,9 @@ function App() {
         {settings ? <Carplay  receivingVideo={receivingVideo} setReceivingVideo={setReceivingVideo} settings={settings} command={keyCommand} commandCounter={commandCounter}/> : null}
         <Routes>
           <Route path={"/"} element={<Home />} />
-          <Route path={"/settings"} element={<Settings settings={settings!}/>} />
           <Route path={"/info"} element={<Info />} />
+          <Route path={"/settings"} element={<Settings settings={settings!}/>} />
+         
           <Route path={"/camera"} element={<Camera settings={settings!}/>} />
         </Routes>
         <Modal
