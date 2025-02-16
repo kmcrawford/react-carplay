@@ -93,7 +93,7 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: config!.width,
     height: config!.height,
-    kiosk: config!.kiosk,
+    //kiosk: config!.kiosk,
     backgroundColor: '#000000',
     show: false,
     frame: false,
@@ -144,6 +144,9 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+    if (config!.kiosk) {
+      mainWindow.setKiosk(true)
+    }
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
