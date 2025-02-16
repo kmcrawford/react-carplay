@@ -30,6 +30,30 @@ export default function useMQTT() {
     };
   }, []);
 
+  const getCurrentGPIOStates = () => {
+    const client = mqtt.connect(MQTT_BROKER);
+    const message = JSON.stringify({ pin: "ALL" });
+    console.log("🔹 Connecting to MQTT broker...");
+
+    client.on("connect", () => {
+      console.log("✅ Connected to MQTT broker.");
+      console.log(`🔹 Publishing to ${CONTROL_TOPIC}:`, message);
+  
+      client.publish(CONTROL_TOPIC, message, (err) => {
+        if (err) {
+          console.error("❌ Publish failed:", err);
+        } else {
+          console.log("✅ Publish successful!");
+        }
+        client.end();
+      });
+    });
+  
+    client.on("error", (err) => {
+      console.error("❌ MQTT connection error:", err);
+    });
+  }
+
   const toggleLED = () => {
     const client = mqtt.connect(MQTT_BROKER);
     const newState = gpioStates.GPIO26 === "High" ? "Low" : "High";
@@ -56,5 +80,5 @@ export default function useMQTT() {
     });
   };
 
-  return { gpioStates, toggleLED };
+  return { gpioStates, toggleLED, getCurrentGPIOStates };
 }

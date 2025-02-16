@@ -2,13 +2,13 @@ import { useEffect, useState, useRef } from "react";
 import useMQTT from "../worker/mqtt";
 
 export default function Info() {
-  const { gpioStates, toggleLED } = useMQTT();
+  const { gpioStates, toggleLED, getCurrentGPIOStates } = useMQTT();
   const [image, setImage] = useState("main.png");
   const initialRender = useRef(true);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-
+    getCurrentGPIOStates()
     if (initialRender.current) {
       initialRender.current = false;
       return;
